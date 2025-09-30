@@ -4,6 +4,7 @@ import React from 'react';
 export default function App() {
   return (
     <View>
+      <Text style={styles.Text}>New</Text>
       <Text style={styles.Text}>App</Text>
     </View>
   );
