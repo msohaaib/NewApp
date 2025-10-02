@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
 
-app.get('/juice', (req, res) => {
-  const juices = ['🍎 Apple Juice', '🥭 Mango Juice', '🍊 Orange Juice'];
-  const randomJuice = juices[Math.floor(Math.random() * juices.length)];
-  res.json({ drink: `Here’s your drink: ${randomJuice}` });
+app.use(express.json());
+
+let attendance = [];
+
+app.post('/attendance', (req, res) => {
+  attendance.push(req.body);
+  res.send('Attendance saved!');
 });
 
-app.listen(3000, () => console.log('Juice shop open on http://localhost:3000'));
-// dijjfdlkgjdlfk
+app.get('/attendance', (req, res) => {
+  res.json(attendance);
+});
+
+app.listen(5000, () => {
+  console.log('Server running on http://localhost:5000');
+});
